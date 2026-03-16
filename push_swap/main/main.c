@@ -6,7 +6,7 @@
 /*   By: gyoong <gyoong@student.42kl.edu.my>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/09 10:51:12 by gyoong            #+#    #+#             */
-/*   Updated: 2026/03/12 20:38:25 by gyoong           ###   ########.fr       */
+/*   Updated: 2026/03/16 15:52:02 by gyoong           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,13 +27,14 @@ int	main(int argc, char **argv)
 	init_stack_a(&stack_a, argv + 1, argc == 2);
 	if (!stack_sorted(stack_a))
 	{
-		if (stack_size(&stack_a) == 2)
+		if ((stack_a.size) == 2)
 			sa(&stack_a, false);
-		else if (stack_size(&stack_a) == 3)
+		else if ((stack_a.size) == 3)
 			sort_three(&stack_a);
 		else
 			sort_big(&stack_a, &stack_b);
 	}
 	free_stack(&stack_a);
+	free_stack(&stack_b);
 	return (0);
 }

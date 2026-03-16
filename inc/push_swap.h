@@ -6,7 +6,7 @@
 /*   By: gyoong <gyoong@student.42kl.edu.my>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/09 10:59:08 by gyoong            #+#    #+#             */
-/*   Updated: 2026/03/12 18:29:40 by gyoong           ###   ########.fr       */
+/*   Updated: 2026/03/16 15:31:56 by gyoong           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 
 # include <stdbool.h>
 # include <limits.h>
-# include "../libft/includes/libft.h" 
+# include "../libft/libft.h" 
 
 typedef struct s_node
 {
@@ -37,4 +37,4 @@ typedef struct s_stack
 	int					size;
 }	t_stack;
 
-# endif
+#endif

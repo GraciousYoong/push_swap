@@ -20,12 +20,12 @@ RM 				= rm -rf
 
 #	Directories
 INC_DIR				= inc/
-SRC_DIR				= src/
+PUSH_SWAP_DIR		= push_swap/
 OBJ_DIR				= obj/
-MAIN_DIR			= $(SRC_DIR)main/
-PARSING_DIR			= $(SRC_DIR)parsing/
-OPERATIONS_DIR		= $(SRC_DIR)operations/
-ALGORITHM_DIR		= $(SRC_DIR)algorithm/
+MAIN_DIR			= $(PUSH_SWAP_DIR)main/
+PARSING_DIR			= $(PUSH_SWAP_DIR)parsing/
+OPERATIONS_DIR		= $(PUSH_SWAP_DIR)operations/
+ALGORITHM_DIR		= $(PUSH_SWAP_DIR)algorithm/
 
 #	Libraries
 LIBFT_DIR			= libft
@@ -59,8 +59,8 @@ ALGORITHM			= 	$(ALGORITHM_DIR)cost.c \
 
 
 #	Concatenate all source files
-SRC					= $(MAIN) $(PARSING) $(OPERATIONS) $(ALGORITHM)
-OBJ					= $(patsubst $(SRC_DIR)%.c,$(OBJ_DIR)%.o,$(SRC))
+PUSH_SWAP			= $(MAIN) $(PARSING) $(OPERATIONS) $(ALGORITHM)
+OBJ					= $(patsubst $(PUSH_SWAP_DIR)%.c,$(OBJ_DIR)%.o,$(PUSH_SWAP))
 
 #	Rules
 all: $(NAME)
@@ -74,7 +74,7 @@ $(LIBFT):
 $(NAME):			$(OBJ) $(LIBFT) $(PRINTF)
 					$(CC) $(CFLAGS) $(INC) $(OBJ) $(LIBFT) -o $(NAME)
 
-$(OBJS_DIR)%.o:		$(SRC_DIR)%.c
+$(OBJS_DIR)%.o:		$(PUSH_SWAP_DIR)%.c
 					mkdir -p $(@D)
 					$(CC) $(CFLAGS) $(INC) -c $< -o $@
 

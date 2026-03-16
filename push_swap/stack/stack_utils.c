@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   init_stack_a.c                                     :+:      :+:    :+:   */
+/*   stack_utils.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: gyoong <gyoong@student.42kl.edu.my>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/03/10 16:52:11 by gyoong            #+#    #+#             */
-/*   Updated: 2026/03/12 20:38:20 by gyoong           ###   ########.fr       */
+/*   Created: 2026/03/16 13:53:16 by gyoong            #+#    #+#             */
+/*   Updated: 2026/03/16 20:11:48 by gyoong           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ t_node	*new_node(int value)
 	node->current_position = 0;
 	node->final_index = 0;
 	node->push_cost = 0;
-	node->above_median = false;
+	node->above_median = true;
 	node->target_node = NULL;
 	node->next = NULL;
 	node->prev = NULL;
@@ -47,52 +47,16 @@ void	add_back(t_stack *stack, t_node *new)
 	stack->size++;
 }
 
-// void	init_stack_a(t_stack *a, char **argv)
-// {
-// 	int		i;
-// 	int		num;
-// 	t_node	*node;
-
-// 	i = 0;
-// 	while (argv[i])
-// 	{
-// 		num = ft_atoi(argv[i]);
-// 		node = new_node(num);
-// 		if (!node)
-// 			return ;
-// 		add_back(a, node);
-// 		i++;
-// 	}
-// }
-
-void	init_stack_a(t_stack *stack_a, char **argv, bool is_argc_2)
+bool	stack_sorted(t_stack *stack_a)
 {
-	int		i;
-	int		num;
-	t_node	*node;
+	t_node	*temp;
 
-
-		
-	i = 0;
-	while (argv[i])
+	temp = stack_a->head;
+	while (temp != stack_a->tail)
 	{
-		if(is_non_numeric(argv[i]))
-			free_and_error(&stack_a);
-		num = ft_atoi(argv[i]);
-		
-		node = new_node(num);
-		if (!node)
-			return ;
-		add_back(a, node);
-		i++;
+		if (temp->num > temp->next->num)
+			return (false);
+		temp = temp->next;
 	}
-	if (is_argc_2)
-		free_splitted_arg(argv);
-}
-
-void	init_stack(t_stack *stack)
-{
-	stack->head = NULL;
-	stack->tail = NULL;
-	stack->size = 0;
+	return (true);
 }
