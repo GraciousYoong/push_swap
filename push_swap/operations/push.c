@@ -6,12 +6,12 @@
 /*   By: gyoong <gyoong@student.42kl.edu.my>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/16 15:52:44 by gyoong            #+#    #+#             */
-/*   Updated: 2026/03/16 19:16:19 by gyoong           ###   ########.fr       */
+/*   Updated: 2026/03/17 15:28:20 by gyoong           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../libft/libft.h"
-#include "../../inc/push_swap.h"
+#include "../push_swap.h"
 
 static t_node	*remove_front(t_stack *origin)
 {

@@ -6,12 +6,12 @@
 /*   By: gyoong <gyoong@student.42kl.edu.my>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/16 16:06:15 by gyoong            #+#    #+#             */
-/*   Updated: 2026/03/16 17:54:39 by gyoong           ###   ########.fr       */
+/*   Updated: 2026/03/17 15:28:23 by gyoong           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../libft/libft.h"
-#include "../../inc/push_swap.h"
+#include "../push_swap.h"
 
 static void	reverse_rotate(t_stack *stack)
 {

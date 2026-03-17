@@ -6,7 +6,7 @@
 /*   By: gyoong <gyoong@student.42kl.edu.my>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/09 10:59:08 by gyoong            #+#    #+#             */
-/*   Updated: 2026/03/16 15:31:56 by gyoong           ###   ########.fr       */
+/*   Updated: 2026/03/17 15:02:33 by gyoong           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,8 +21,7 @@ typedef struct s_node
 {
 	int					num;
 	int					current_position;
-	int					final_index;
-	int					push_cost;
+	int					cost;
 	bool				above_median;
 	bool				cheapest;
 	struct s_node		*target_node;	

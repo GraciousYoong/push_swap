@@ -6,12 +6,12 @@
 /*   By: gyoong <gyoong@student.42kl.edu.my>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/02 23:59:44 by gyoong            #+#    #+#             */
-/*   Updated: 2026/03/16 13:45:19 by gyoong           ###   ########.fr       */
+/*   Updated: 2026/03/17 15:28:47 by gyoong           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../libft/libft.h"
-#include "../../inc/push_swap.h"
+#include "../push_swap.h"
 
 static int	arg_count(char *str, char c)
 {

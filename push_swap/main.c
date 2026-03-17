@@ -6,12 +6,12 @@
 /*   By: gyoong <gyoong@student.42kl.edu.my>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/09 10:51:12 by gyoong            #+#    #+#             */
-/*   Updated: 2026/03/16 15:52:02 by gyoong           ###   ########.fr       */
+/*   Updated: 2026/03/17 15:27:48 by gyoong           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../libft/libft.h"
-#include "../../inc/push_swap.h"
+#include "../libft/libft.h"
+#include "push_swap.h"
 
 int	main(int argc, char **argv)
 {
@@ -35,6 +35,5 @@ int	main(int argc, char **argv)
 			sort_big(&stack_a, &stack_b);
 	}
 	free_stack(&stack_a);
-	free_stack(&stack_b);
 	return (0);
 }
