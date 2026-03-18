@@ -32,7 +32,24 @@ void	set_current_position(t_stack *stack)
 	}
 }
 
-void	fill_target_node(t_stack *stack_a, t_stack *stack_b)
+static t_node	*find_target_node(t_stack *stack_a, t_node *node)
+{
+	t_node	*target_node;
+	int	nodes_left;
+
+	target_node = stack_a->head;
+	nodes_left = stack_a->size;
+	while (nodes_left > 0)
+	{
+		if (node < target_node)
+			return(target_node);
+		target_node = target_node->next;
+		nodes_left--;
+	}
+	return(stack_a->head);
+}
+
+static void	fill_target_node(t_stack *stack_a, t_stack *stack_b)
 {
 	t_node	*temp;
 	int		nodes_left;
@@ -41,17 +58,55 @@ void	fill_target_node(t_stack *stack_a, t_stack *stack_b)
 	nodes_left = stack_b->size;
 	while (nodes_left > 0)
 	{
+		temp->target_node = find_target_node(stack_a, temp);
+		temp = temp->next;
+		nodes_left--;
 	}
 }
 
-void	set_cost(t_stack *stack_a, t_stack *stack_b)
+static void	set_cost(t_stack *stack_a, t_stack *stack_b)
 {
-	
+	t_node	*temp;
+	int		nodes_left;
+
+	temp = stack_b->head;
+	nodes_left = stack_b->size;
+	while (nodes_left > 0)
+	{
+		if (temp->above_median && temp->target_node->above_median)
+		temp->cost = temp->current_position + temp->target_node->current_position;
+		else if (temp->above_median && !temp->target_node->above_median)
+		temp->cost = temp->current_position + (stack_a->size - temp->target_node->current_position);
+		else if (!temp->above_median && temp->target_node->above_median)
+		temp->cost = (stack_b->size - temp->current_position) + temp->target_node->current_position;
+		else
+		temp->cost = (stack_b->size - temp->current_position) + (stack_a->size - temp->target_node->current_position);
+		temp = temp->next;
+		nodes_left--;
+	}
 }
 
-void	set_cheapest(t_stack *stack)
+static void	set_cheapest(t_stack *stack)
 {
-	
+	t_node	*temp;
+	t_node	*cheapest_node;
+	int 	nodes_left;
+
+	temp = stack->head;
+	cheapest_node = stack->head;
+	cheapest_node->cheapest = true;
+	nodes_left = stack->size;
+	while(nodes_left > 0)
+	{
+		if (cheapest_node->cost > temp->cost)
+		{
+			cheapest_node->cheapest = false;
+			temp->cheapest = true;
+			cheapest_node = temp;
+		}
+		temp = temp->next;
+		nodes_left--;
+	}
 }
 
 void	init_nodes(t_stack *stack_a, t_stack *stack_b)
@@ -62,26 +117,3 @@ void	init_nodes(t_stack *stack_a, t_stack *stack_b)
 	set_cost(stack_a, stack_b);
 	set_cheapest(stack_b);
 }
-
-
-/*
-functions to write:
-
-Optional : sort_five
-
-1. fill_target_nodes -> find_smallest
-
-2. set_current_position (!!! dynamic) + bool above median
-
-3. cal_push_cost
-if both above median, push cost = sum of current position of the node and its target node
-if target node !above median, push cost = 
-sum of (stack->size - current position of target node) and current position of node
-if node !above median, push cost = 
-sum of current position of target node and (stack->size - current position of node)
-if both !above median, push cost = 
-sum of (stack->size - current position of target node) and (stack->size - current position of node)
-
-cheapest
-final index
-*/

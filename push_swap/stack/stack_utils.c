@@ -24,6 +24,7 @@ t_node	*new_node(int value)
 	node->current_position = 0;
 	node->cost = 0;
 	node->above_median = true;
+	node->cheapest = false;
 	node->target_node = NULL;
 	node->next = NULL;
 	node->prev = NULL;
