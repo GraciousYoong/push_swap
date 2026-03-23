@@ -31,6 +31,8 @@ int	main(int argc, char **argv)
 			sa(&stack_a, false);
 		else if ((stack_a.size) == 3)
 			sort_three(&stack_a);
+		else if ((stack_a.size) == 5)
+			sort_five(&stack_a, &stack_b);
 		else
 			sort_big(&stack_a, &stack_b);
 	}

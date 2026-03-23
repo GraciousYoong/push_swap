@@ -57,3 +57,16 @@ void	sort_three(t_stack *stack_a)
 		}
 	}
 }
+
+void	sort_five(t_stack *stack_a, t_stack *stack_b)
+{
+	while (stack_a->size > 3)
+	{
+		init_nodes(stack_a, stack_b);
+		finish_rotation(stack_a, find_smallest(stack_a), 'a');
+		pb(stack_a, stack_b, false);
+	}
+	sort_three(stack_a);
+	while(stack_b->size > 0)
+		pa(stack_a, stack_b, false);
+}
