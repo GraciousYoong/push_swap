@@ -89,3 +89,20 @@ t_node	*find_smallest(t_stack *stack_a)
 	}
 	return (smallest_node);
 }
+
+t_node	*find_cheapest(t_stack *stack_b)
+{
+	t_node	current_b;
+	int		nodes_left;
+
+	current_b = stack_b->head;
+	nodes_left = stack_b->size;
+	while (nodes_left > 0)
+	{
+		if (current_b->cheapest)
+			return (current_b);
+		current_b = current_b->next;
+		nodes_left--;
+	}
+	return (NULL);
+}

@@ -52,7 +52,7 @@ void	init_stack_a(t_stack *stack_a, char **argv, bool is_argc_2)
 		if (is_non_numeric(argv[i]))
 			free_and_error(stack_a, argv, is_argc_2);
 		num = ft_safe_atoi(argv[i]);
-		if (num > INT_MAX)
+		if (num > INT_MAX || num < INT_MIN)
 			free_and_error(stack_a, argv, is_argc_2);
 		if (is_duplicate(num, stack_a))
 			free_and_error(stack_a, argv, is_argc_2);
