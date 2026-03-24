@@ -6,7 +6,7 @@
 #    By: gyoong <gyoong@student.42kl.edu.my>        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/10/27 17:46:04 by gyoong            #+#    #+#              #
-#    Updated: 2025/11/06 12:00:02 by gyoong           ###   ########.fr        #
+#    Updated: 2026/03/24 15:45:39 by gyoong           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -47,7 +47,7 @@ SRC = ft_isalpha.c \
 		ft_putchar_fd.c \
 		ft_putstr_fd.c \
 		ft_putendl_fd.c \
-		ft_putnbr_fd.c \
+		ft_putnbr_fd.c
 
 Bonus_SRC = ft_lstnew.c \
 			ft_lstadd_front.c \
@@ -57,7 +57,7 @@ Bonus_SRC = ft_lstnew.c \
 			ft_lstdelone.c \
 			ft_lstclear.c \
 			ft_lstiter.c \
-			ft_lstmap.c \
+			ft_lstmap.c
 			
 OBJ = $(SRC:.c=.o)
 Bonus_OBJ = $(Bonus_SRC:.c=.o)

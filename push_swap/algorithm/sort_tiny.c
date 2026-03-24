@@ -67,6 +67,6 @@ void	sort_five(t_stack *stack_a, t_stack *stack_b)
 		pb(stack_a, stack_b, false);
 	}
 	sort_three(stack_a);
-	while(stack_b->size > 0)
+	while (stack_b->size > 0)
 		pa(stack_a, stack_b, false);
 }

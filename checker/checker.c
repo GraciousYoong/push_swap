@@ -31,9 +31,11 @@ static void	error(t_stack *stack_a, t_stack *stack_b)
 	exit(1);
 }
 
-static void    parse_operations(t_stack *stack_a, t_stack *stack_b, char *operation)
+static void	parse_operations(t_stack *stack_a,
+	t_stack *stack_b,
+	char *operation)
 {
-    if (!ft_strcmp(operation, "pa\n"))
+	if (!ft_strcmp(operation, "pa\n"))
 		pa(stack_a, stack_b, true);
 	else if (!ft_strcmp(operation, "pb\n"))
 		pb(stack_a, stack_b, true);
@@ -59,12 +61,12 @@ static void    parse_operations(t_stack *stack_a, t_stack *stack_b, char *operat
 		error(stack_a, stack_b);
 }
 
-int main(int argc, char **argv)
+int	main(int argc, char **argv)
 {
 	t_stack	stack_a;
 	t_stack	stack_b;
-    int     stack_size;
-    char    *next_line;
+	int		stack_size;
+	char	*next_line;
 
 	init_stack(&stack_a);
 	init_stack(&stack_b);
@@ -74,16 +76,16 @@ int main(int argc, char **argv)
 		argv = split_arg(argv[1], ' ');
 	init_stack_a(&stack_a, argv + 1, argc == 2);
 	stack_size = stack_a->size;
-    next_line = get_next_line(STDIN_FILENO);
-    while(next_line)
-    {
-        parse_operations(&stack_a, &stack_b, next_line);
-        next_line = get_next_line(STDIN_FILENO);
-    }
-    if (stack_sorted(stack_a) && stack_a->size == stack_size)
-        write(1, "OK\n", 3);
-    else
-        write(1, "KO\n", 3);
+	next_line = get_next_line(STDIN_FILENO);
+	while (next_line)
+	{
+		parse_operations(&stack_a, &stack_b, next_line);
+		next_line = get_next_line(STDIN_FILENO);
+	}
+	if (stack_sorted(stack_a) && stack_a->size == stack_size)
+		write(1, "OK\n", 3);
+	else
+		write(1, "KO\n", 3);
 	free_stack(&stack_a);
 	return (0);
 }

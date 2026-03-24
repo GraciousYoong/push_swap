@@ -12,6 +12,7 @@
 
 #	Standard
 NAME			= push_swap
+BONUS			= checker
 
 #	Compilation
 CC				= cc
@@ -19,10 +20,11 @@ CFLAGS 			= -Wall -Wextra -Werror
 RM 				= rm -rf
 
 #	Directories
-INC_DIR				= inc/
 PUSH_SWAP_DIR		= push_swap/
-OBJ_DIR				= obj/
-MAIN_DIR			= $(PUSH_SWAP_DIR)main/
+OBJ_DIR				= push_swap/obj/
+CHECKER_DIR			= checker/
+CHECKER_OBJ_DIR		= checker/obj/
+STACK_DIR			= $(PUSH_SWAP_DIR)stack/
 PARSING_DIR			= $(PUSH_SWAP_DIR)parsing/
 OPERATIONS_DIR		= $(PUSH_SWAP_DIR)operations/
 ALGORITHM_DIR		= $(PUSH_SWAP_DIR)algorithm/
@@ -32,60 +34,68 @@ LIBFT_DIR			= libft
 LIBFT				= $(LIBFT_DIR)/libft.a
 
 #	Includes
-INC					= -I $(INC_DIR)
+INC					= -I $(PUSH_SWAP_DIR)
 
 #	Source Files
-MAIN				=	$(MAIN_DIR)initialize.c \
-						$(MAIN_DIR)initialize_utils.c \
-						$(MAIN_DIR)main.c \
-						$(MAIN_DIR)main_utils.c
+MAIN				=	$(PUSH_SWAP_DIR)main.c
 
-PARSING				= 	$(PARSING_DIR)parse_argument.c \
-						$(PARSING_DIR)parse_utils.c \
-						$(PARSING_DIR)parse_input.c \
-						$(PARSING_DIR)parse_return_helpers.c
+STACK				=	$(STACK_DIR)init_stack.c \
+						$(STACK_DIR)stack_utils.c 
+
+PARSING				= 	$(PARSING_DIR)split_arg.c \
+						$(PARSING_DIR)input_checking.c \
+						$(PARSING_DIR)free_and_error.c 
 
 OPERATIONS			= 	$(OPERATIONS_DIR)rotate.c \
-						$(OPERATIONS_DIR)rev_rotate.c \
+						$(OPERATIONS_DIR)reverse_rotate.c \
 						$(OPERATIONS_DIR)push.c \
-						$(OPERATIONS_DIR)swap.c 
+						$(OPERATIONS_DIR)swap.c
 
-ALGORITHM			= 	$(ALGORITHM_DIR)cost.c \
-						$(ALGORITHM_DIR)position.c \
-						$(ALGORITHM_DIR)do_move.c \
-						$(ALGORITHM_DIR)sort_utils.c \
-						$(ALGORITHM_DIR)sort_stack.c \
-						$(ALGORITHM_DIR)sort_three.c
+ALGORITHM			= 	$(ALGORITHM_DIR)init_nodes.c \
+						$(ALGORITHM_DIR)init_nodes_utils.c \
+						$(ALGORITHM_DIR)move_nodes.c \
+						$(ALGORITHM_DIR)sort_big.c \
+						$(ALGORITHM_DIR)sort_tiny.c
 
+CHECKER				= 	$(CHECKER_DIR)checker.c \
+						$(CHECKER_DIR)get_next_line.c \
+						$(CHECKER_DIR)get_next_line_utils.c
 
 #	Concatenate all source files
-PUSH_SWAP			= $(MAIN) $(PARSING) $(OPERATIONS) $(ALGORITHM)
+PUSH_SWAP			= $(MAIN) $(STACK) $(PARSING) $(OPERATIONS) $(ALGORITHM)
 OBJ					= $(patsubst $(PUSH_SWAP_DIR)%.c,$(OBJ_DIR)%.o,$(PUSH_SWAP))
+CHECKER_OBJ			= $(patsubst $(CHECKER_DIR)%.c,$(CHECKER_OBJ_DIR)%.o,$(CHECKER))
 
 #	Rules
-all: $(NAME)
-
-start:
-					@make all
-
 $(LIBFT):
 					@make -C $(LIBFT_DIR)
 
-$(NAME):			$(OBJ) $(LIBFT) $(PRINTF)
+$(NAME):			$(OBJ) $(LIBFT)
 					$(CC) $(CFLAGS) $(INC) $(OBJ) $(LIBFT) -o $(NAME)
 
-$(OBJS_DIR)%.o:		$(PUSH_SWAP_DIR)%.c
+$(BONUS):			$(OBJ) $(CHECKER_OBJ) $(LIBFT)
+					$(CC) $(CFLAGS) $(INC) $(OBJ) $(CHECKER_OBJ) $(LIBFT) -o $(BONUS)
+
+$(OBJ_DIR)%.o:		$(PUSH_SWAP_DIR)%.c
 					mkdir -p $(@D)
 					$(CC) $(CFLAGS) $(INC) -c $< -o $@
 
+$(CHECKER_OBJ_DIR)%.o:	$(CHECKER_DIR)%.c
+						mkdir -p $(@D)
+						$(CC) $(CFLAGS) $(INC) -c $< -o $@
+
+all:				$(NAME)
+
+bonus: 				$(BONUS)
+
 clean:
-					$(RM) $(OBJ_DIR)
+					$(RM) $(OBJ_DIR) $(CHECKER_OBJ_DIR)
 					@make clean -C $(LIBFT_DIR)
 
 fclean:				clean
-					$(RM) $(NAME)
+					$(RM) $(NAME) $(BONUS)
 					@make fclean -C $(LIBFT_DIR)
 
 re:					fclean all
 
-.PHONY:				start all clean fclean
+.PHONY:				all clean fclean re bonus

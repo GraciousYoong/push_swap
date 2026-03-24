@@ -19,6 +19,8 @@ void	set_current_position(t_stack *stack)
 	int		i;
 	int		median_line;
 
+	if (!stack->head || target->size == 0)
+		return ;
 	temp = stack->head;
 	i = 1;
 	median_line = stack->size / 2;
@@ -114,7 +116,7 @@ void	set_cheapest(t_stack *stack_b)
 	int		cheapest_cost;
 	int		nodes_left;
 
-	if (!stack_b || stack_b->size == 0)
+	if (!stack_b->head || stack_b->size == 0)
 		return ;
 	current_b = stack_b->head;
 	cheapest_cost = INT_MAX;
