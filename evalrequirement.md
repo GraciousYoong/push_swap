@@ -1,8 +1,12 @@
+!!! numeric parameter + greater than maxint	>>> print Error\n
+!!! cannot handle negative value
+!!! 100 random value -> 817-1221, sometime time out
+!!! 500 random value -> 8043-9222, sometime time out
 
 //Error
 non numeric parameter >>> print Error\n
 duplicate numeric parameter >>> print Error\n
-numeric parameter + greater than maxint	>>> print Error\n
+!!! numeric parameter + greater than maxint	>>> print Error\n
 without parameter >>> display nothing
 
 //Sorted list
