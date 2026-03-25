@@ -6,7 +6,7 @@
 /*   By: gyoong <gyoong@student.42kl.edu.my>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/16 22:21:50 by gyoong            #+#    #+#             */
-/*   Updated: 2026/03/17 15:28:16 by gyoong           ###   ########.fr       */
+/*   Updated: 2026/03/25 17:46:21 by gyoong           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,25 +35,25 @@ void	sort_three(t_stack *stack_a)
 
 	max_position = sort_3_max_pos(stack_a);
 	if (max_position == 3)
-		sa(&stack_a, false);
+		sa(stack_a, false);
 	else if (max_position == 2)
 	{
 		if (stack_a->head->num > stack_a->tail->num)
-			rra(&stack_a, false);
+			rra(stack_a, false);
 		else
 		{
-			rra(&stack_a, false);
-			sa(&stack_a, false);
+			rra(stack_a, false);
+			sa(stack_a, false);
 		}
 	}
 	else
 	{
 		if (stack_a->tail->num > stack_a->head->next->num)
-			ra(&stack_a, false);
+			ra(stack_a, false);
 		else
 		{
-			ra(&stack_a, false);
-			sa(&stack_a, false);
+			ra(stack_a, false);
+			sa(stack_a, false);
 		}
 	}
 }

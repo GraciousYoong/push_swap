@@ -6,7 +6,7 @@
 /*   By: gyoong <gyoong@student.42kl.edu.my>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/16 11:13:44 by gyoong            #+#    #+#             */
-/*   Updated: 2026/03/17 15:28:38 by gyoong           ###   ########.fr       */
+/*   Updated: 2026/03/25 19:39:46 by gyoong           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,13 +38,13 @@ void	free_splitted_arg(char	**argv)
 {
 	int	i;
 
+	i = 0;
 	while (argv[i])
 	{
 		free(argv[i]);
 		i++;
 	}
 	free(argv);
-	exit(1);
 }
 
 void	free_and_error(t_stack *stack_a, char **argv, bool is_argc_2)

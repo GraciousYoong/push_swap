@@ -6,7 +6,7 @@
 /*   By: gyoong <gyoong@student.42kl.edu.my>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/09 10:59:08 by gyoong            #+#    #+#             */
-/*   Updated: 2026/03/17 15:02:33 by gyoong           ###   ########.fr       */
+/*   Updated: 2026/03/25 17:47:50 by gyoong           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,5 +83,6 @@ void	sort_three(t_stack *stack_a);
 void	sort_five(t_stack *stack_a, t_stack *stack_b);
 void	sort_big(t_stack *stack_a, t_stack *stack_b);
 void	move_nodes(t_stack *stack_a, t_stack *stack_b);
+void	finish_rotation(t_stack *stack, t_node *top_node, char stack_name);
 
 #endif

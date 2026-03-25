@@ -6,7 +6,7 @@
 /*   By: gyoong <gyoong@student.42kl.edu.my>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/24 01:28:12 by gyoong            #+#    #+#             */
-/*   Updated: 2026/03/24 01:28:12 by gyoong           ###   ########.fr       */
+/*   Updated: 2026/03/25 17:45:28 by gyoong           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ void	set_current_position(t_stack *stack)
 	int		i;
 	int		median_line;
 
-	if (!stack->head || target->size == 0)
+	if (!stack->head || stack->size == 0)
 		return ;
 	temp = stack->head;
 	i = 1;

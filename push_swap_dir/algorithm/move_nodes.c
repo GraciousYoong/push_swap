@@ -6,7 +6,7 @@
 /*   By: gyoong <gyoong@student.42kl.edu.my>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/24 01:30:33 by gyoong            #+#    #+#             */
-/*   Updated: 2026/03/24 01:30:33 by gyoong           ###   ########.fr       */
+/*   Updated: 2026/03/25 17:47:20 by gyoong           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ static void	reverse_rotate_both(t_stack *stack_a,
 	set_current_position(stack_b);
 }
 
-static void	finish_rotation(t_stack *stack, t_node *top_node, char stack_name)
+void	finish_rotation(t_stack *stack, t_node *top_node, char stack_name)
 {
 	while (stack->head != top_node)
 	{

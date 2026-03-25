@@ -6,7 +6,7 @@
 /*   By: gyoong <gyoong@student.42kl.edu.my>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/16 13:53:16 by gyoong            #+#    #+#             */
-/*   Updated: 2026/03/17 15:51:04 by gyoong           ###   ########.fr       */
+/*   Updated: 2026/03/25 19:26:29 by gyoong           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,7 +56,7 @@ bool	stack_sorted(t_stack *stack_a)
 
 	temp = stack_a->head;
 	nodes_left = stack_a->size;
-	while (nodes_left > 0)
+	while (nodes_left > 1)
 	{
 		if (temp->num > temp->next->num)
 			return (false);
@@ -92,7 +92,7 @@ t_node	*find_smallest(t_stack *stack_a)
 
 t_node	*find_cheapest(t_stack *stack_b)
 {
-	t_node	current_b;
+	t_node	*current_b;
 	int		nodes_left;
 
 	current_b = stack_b->head;

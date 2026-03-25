@@ -6,7 +6,7 @@
 /*   By: gyoong <gyoong@student.42kl.edu.my>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/16 14:17:22 by gyoong            #+#    #+#             */
-/*   Updated: 2026/03/17 15:28:42 by gyoong           ###   ########.fr       */
+/*   Updated: 2026/03/25 19:34:43 by gyoong           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,15 +41,18 @@ is duplicate with numbers stored in stack_a.
 bool	is_duplicate(int num, t_stack *stack_a)
 {
 	t_node	*temp;
-
+	int		nodes_left;
+	
 	if (!stack_a || !stack_a->head)
 		return (false);
 	temp = stack_a->head;
-	while (temp != stack_a->tail)
+	nodes_left = stack_a->size;
+	while (nodes_left > 0)
 	{
 		if (num == temp->num)
 			return (true);
 		temp = temp->next;
+		nodes_left--;
 	}
 	return (false);
 }

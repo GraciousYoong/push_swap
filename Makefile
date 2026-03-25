@@ -20,10 +20,10 @@ CFLAGS 			= -Wall -Wextra -Werror
 RM 				= rm -rf
 
 #	Directories
-PUSH_SWAP_DIR		= push_swap/
-OBJ_DIR				= push_swap/obj/
-CHECKER_DIR			= checker/
-CHECKER_OBJ_DIR		= checker/obj/
+PUSH_SWAP_DIR		= push_swap_dir/
+OBJ_DIR				= push_swap_dir/obj/
+CHECKER_DIR			= checker_dir/
+CHECKER_OBJ_DIR		= checker_dir/obj/
 STACK_DIR			= $(PUSH_SWAP_DIR)stack/
 PARSING_DIR			= $(PUSH_SWAP_DIR)parsing/
 OPERATIONS_DIR		= $(PUSH_SWAP_DIR)operations/
@@ -67,6 +67,9 @@ OBJ					= $(patsubst $(PUSH_SWAP_DIR)%.c,$(OBJ_DIR)%.o,$(PUSH_SWAP))
 CHECKER_OBJ			= $(patsubst $(CHECKER_DIR)%.c,$(CHECKER_OBJ_DIR)%.o,$(CHECKER))
 
 #	Rules
+
+all:				$(NAME)
+
 $(LIBFT):
 					@make -C $(LIBFT_DIR)
 
@@ -83,8 +86,6 @@ $(OBJ_DIR)%.o:		$(PUSH_SWAP_DIR)%.c
 $(CHECKER_OBJ_DIR)%.o:	$(CHECKER_DIR)%.c
 						mkdir -p $(@D)
 						$(CC) $(CFLAGS) $(INC) -c $< -o $@
-
-all:				$(NAME)
 
 bonus: 				$(BONUS)
 
