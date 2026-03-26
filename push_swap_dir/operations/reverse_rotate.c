@@ -6,7 +6,7 @@
 /*   By: gyoong <gyoong@student.42kl.edu.my>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/16 16:06:15 by gyoong            #+#    #+#             */
-/*   Updated: 2026/03/17 15:28:23 by gyoong           ###   ########.fr       */
+/*   Updated: 2026/03/26 18:47:59 by gyoong           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,8 @@
 static void	reverse_rotate(t_stack *stack)
 {
 	if (!stack || stack->size < 2)
+		return ;
+	if (!stack->head || !stack->tail)
 		return ;
 	stack->head = stack->head->prev;
 	stack->tail = stack->tail->prev;

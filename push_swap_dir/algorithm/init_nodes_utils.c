@@ -6,7 +6,7 @@
 /*   By: gyoong <gyoong@student.42kl.edu.my>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/24 01:28:12 by gyoong            #+#    #+#             */
-/*   Updated: 2026/03/25 17:45:28 by gyoong           ###   ########.fr       */
+/*   Updated: 2026/03/26 18:15:56 by gyoong           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,12 +22,14 @@ void	set_current_position(t_stack *stack)
 	if (!stack->head || stack->size == 0)
 		return ;
 	temp = stack->head;
-	i = 1;
+	i = 0;
 	median_line = stack->size / 2;
-	while (i <= stack->size)
+	while (i < stack->size)
 	{
 		temp->current_position = i;
-		if (i > median_line)
+		if (i < median_line)
+			temp->above_median = true;
+		else
 			temp->above_median = false;
 		temp = temp->next;
 		i++;
@@ -96,8 +98,9 @@ void	set_cost(t_stack *stack_a, t_stack *stack_b)
 	nodes_left = stack_b->size;
 	while (nodes_left > 0)
 	{
-		current_b->cost = current_b->current_position;
-		if (!(current_b->above_median))
+		if (current_b->above_median)
+			current_b->cost = current_b->current_position;
+		else
 			current_b->cost = size_b - (current_b->current_position);
 		if (current_b->target_node->above_median)
 			current_b->cost += current_b->target_node->current_position;
@@ -118,6 +121,13 @@ void	set_cheapest(t_stack *stack_b)
 
 	if (!stack_b->head || stack_b->size == 0)
 		return ;
+	current_b = stack_b->head;
+	nodes_left = stack_b->size;
+	while (nodes_left--)
+	{
+		current_b->cheapest = false;
+		current_b = current_b->next;
+	}
 	current_b = stack_b->head;
 	cheapest_cost = INT_MAX;
 	nodes_left = stack_b->size;

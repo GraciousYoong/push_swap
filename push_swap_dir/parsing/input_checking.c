@@ -6,7 +6,7 @@
 /*   By: gyoong <gyoong@student.42kl.edu.my>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/16 14:17:22 by gyoong            #+#    #+#             */
-/*   Updated: 2026/03/25 19:34:43 by gyoong           ###   ########.fr       */
+/*   Updated: 2026/03/26 17:27:39 by gyoong           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,9 +22,9 @@ bool	is_non_numeric(char *num_str)
 	if (*num_str != '+' && *num_str != '-'
 		&& !(*num_str >= '0' && *num_str <= '9'))
 		return (true);
-	if ((*num_str == '+' || *num_str == '-')
-		&& !(*num_str >= '0' && *num_str <= '9'))
-		return (true);
+	if (*num_str == '+' || *num_str == '-')
+		num_str++;
+		
 	while (*num_str)
 	{
 		if (!(*num_str >= '0' && *num_str <= '9'))

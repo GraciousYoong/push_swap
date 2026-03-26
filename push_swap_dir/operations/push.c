@@ -6,7 +6,7 @@
 /*   By: gyoong <gyoong@student.42kl.edu.my>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/16 15:52:44 by gyoong            #+#    #+#             */
-/*   Updated: 2026/03/17 15:28:20 by gyoong           ###   ########.fr       */
+/*   Updated: 2026/03/26 19:12:45 by gyoong           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,19 +32,19 @@ static t_node	*remove_front(t_stack *origin)
 		origin->tail->next = origin->head;
 	}
 	origin->size--;
-	node_pushed->prev = node_pushed;
-	node_pushed->next = node_pushed;
 	return (node_pushed);
 }
 
 static void	add_front(t_stack *target, t_node *node_pushed)
 {
-	if (!target)
+	if (!target || !node_pushed)
 		return ;
 	if (!target->head || target->size == 0)
 	{
 		target->head = node_pushed;
 		target->tail = node_pushed;
+		node_pushed->next = node_pushed;
+		node_pushed->prev = node_pushed;
 	}
 	else
 	{

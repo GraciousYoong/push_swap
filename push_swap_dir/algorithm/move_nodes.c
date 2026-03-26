@@ -6,7 +6,7 @@
 /*   By: gyoong <gyoong@student.42kl.edu.my>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/24 01:30:33 by gyoong            #+#    #+#             */
-/*   Updated: 2026/03/25 17:47:20 by gyoong           ###   ########.fr       */
+/*   Updated: 2026/03/26 18:51:34 by gyoong           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,19 +37,25 @@ static void	reverse_rotate_both(t_stack *stack_a,
 
 void	finish_rotation(t_stack *stack, t_node *top_node, char stack_name)
 {
+	bool	above_median;
+	
+	if (top_node->above_median)
+		above_median = true;
+	else
+		above_median = false;
 	while (stack->head != top_node)
 	{
-		if (stack_name == 'a')
+		if (above_median)
 		{
-			if (top_node->above_median)
+			if (stack_name == 'a')
 				ra(stack, false);
 			else
-				rra(stack, false);
+				rb(stack, false);
 		}
 		else
 		{
-			if (top_node->above_median)
-				rb(stack, false);
+			if (stack_name == 'a')
+				rra(stack, false);
 			else
 				rrb(stack, false);
 		}

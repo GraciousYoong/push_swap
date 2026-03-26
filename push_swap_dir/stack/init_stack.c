@@ -6,14 +6,14 @@
 /*   By: gyoong <gyoong@student.42kl.edu.my>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/16 13:52:16 by gyoong            #+#    #+#             */
-/*   Updated: 2026/03/17 15:28:52 by gyoong           ###   ########.fr       */
+/*   Updated: 2026/03/26 17:11:50 by gyoong           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../libft/libft.h"
 #include "../push_swap.h"
 
-static int	ft_safe_atoi(const char *str)
+static long int	ft_safe_atoi(const char *str)
 {
 	int			i;
 	int			sign;

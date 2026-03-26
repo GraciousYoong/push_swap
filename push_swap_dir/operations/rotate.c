@@ -6,7 +6,7 @@
 /*   By: gyoong <gyoong@student.42kl.edu.my>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/16 16:03:20 by gyoong            #+#    #+#             */
-/*   Updated: 2026/03/17 15:28:28 by gyoong           ###   ########.fr       */
+/*   Updated: 2026/03/26 18:48:28 by gyoong           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,8 @@
 static void	rotate(t_stack *stack)
 {
 	if (!stack || stack->size < 2)
+		return ;
+	if (!stack->head || !stack->tail)
 		return ;
 	stack->head = stack->head->next;
 	stack->tail = stack->tail->next;
