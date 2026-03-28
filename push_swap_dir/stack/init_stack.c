@@ -6,7 +6,7 @@
 /*   By: gyoong <gyoong@student.42kl.edu.my>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/16 13:52:16 by gyoong            #+#    #+#             */
-/*   Updated: 2026/03/26 17:11:50 by gyoong           ###   ########.fr       */
+/*   Updated: 2026/03/28 21:10:19 by gyoong           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,7 +58,7 @@ void	init_stack_a(t_stack *stack_a, char **argv, bool is_argc_2)
 			free_and_error(stack_a, argv, is_argc_2);
 		node = new_node(num);
 		if (!node)
-			return ;
+			free_and_error(stack_a, argv, is_argc_2);
 		add_back(stack_a, node);
 		i++;
 	}

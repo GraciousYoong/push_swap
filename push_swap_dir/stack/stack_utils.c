@@ -6,7 +6,7 @@
 /*   By: gyoong <gyoong@student.42kl.edu.my>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/16 13:53:16 by gyoong            #+#    #+#             */
-/*   Updated: 2026/03/25 19:26:29 by gyoong           ###   ########.fr       */
+/*   Updated: 2026/03/28 23:58:59 by gyoong           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,6 +37,8 @@ void	add_back(t_stack *stack_a, t_node *new)
 	{
 		stack_a->head = new;
 		stack_a->tail = new;
+		new->next = new;
+    	new->prev = new;
 	}
 	else
 	{
@@ -52,16 +54,13 @@ void	add_back(t_stack *stack_a, t_node *new)
 bool	stack_sorted(t_stack *stack_a)
 {
 	t_node	*temp;
-	int		nodes_left;
 
 	temp = stack_a->head;
-	nodes_left = stack_a->size;
-	while (nodes_left > 1)
+	while (temp != stack_a->tail)
 	{
 		if (temp->num > temp->next->num)
 			return (false);
 		temp = temp->next;
-		nodes_left--;
 	}
 	return (true);
 }
@@ -70,12 +69,12 @@ t_node	*find_smallest(t_stack *stack_a)
 {
 	t_node		*smallest_node;
 	t_node		*temp;
-	long int	smallest_num;
+	int			smallest_num;
 	int			nodes_left;
 
 	smallest_node = stack_a->head;
 	temp = stack_a->head;
-	smallest_num = LONG_MAX;
+	smallest_num = INT_MAX;
 	nodes_left = stack_a->size;
 	while (nodes_left > 0)
 	{

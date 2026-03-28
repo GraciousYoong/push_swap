@@ -6,7 +6,7 @@
 /*   By: gyoong <gyoong@student.42kl.edu.my>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/16 15:52:44 by gyoong            #+#    #+#             */
-/*   Updated: 2026/03/26 19:12:45 by gyoong           ###   ########.fr       */
+/*   Updated: 2026/03/28 22:44:01 by gyoong           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,8 @@ static t_node	*remove_front(t_stack *origin)
 		origin->tail->next = origin->head;
 	}
 	origin->size--;
+	node_pushed->next = NULL;
+	node_pushed->prev = NULL;
 	return (node_pushed);
 }
 

@@ -6,7 +6,7 @@
 /*   By: gyoong <gyoong@student.42kl.edu.my>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/24 01:30:33 by gyoong            #+#    #+#             */
-/*   Updated: 2026/03/26 18:51:34 by gyoong           ###   ########.fr       */
+/*   Updated: 2026/03/29 00:02:09 by gyoong           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,6 +67,8 @@ void	move_nodes(t_stack *stack_a, t_stack *stack_b)
 	t_node	*cheapest_node;
 
 	cheapest_node = find_cheapest(stack_b);
+	if (!cheapest_node)
+    	return ;
 	if (cheapest_node->above_median
 		&& cheapest_node->target_node->above_median)
 		rotate_both(stack_a, stack_b, cheapest_node);

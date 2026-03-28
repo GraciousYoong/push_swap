@@ -1,6 +1,28 @@
 !!! 100 random value -> 817-1221, sometime time out
 !!! 500 random value -> 8043-9222, sometime time out
 
+!!!got issue: ./push_swap 36595 48640 12083 6995 41654 8007 20870 31288 12459 38094
+
+//print_stack(stack_a.head, &stack_a);
+	print_stack(stack_a->head, stack_a);
+	printf("============================\n");
+	print_stack(stack_b->head, stack_b);
+
+static void    print_stack(t_node *head, t_stack *stack)
+{
+    t_node    *current;
+    int            i;
+
+    current = head;
+    i = 0;
+    while (i < stack->size)
+    {
+        printf("Node %d: %d\n",i, current->num);
+        current = current->next;
+        i++;
+    }
+}
+
 //Error
 non numeric parameter >>> print Error\n
 duplicate numeric parameter >>> print Error\n
