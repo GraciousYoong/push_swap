@@ -16,7 +16,7 @@
 # include <stdlib.h>
 # include <fcntl.h>
 # include <unistd.h>
-# include "../push_swap/push_swap.h" 
+# include "../push_swap_dir/push_swap.h" 
 
 //get_next_line utilities
 char	*get_next_line(int fd);

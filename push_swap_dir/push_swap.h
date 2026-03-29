@@ -20,6 +20,7 @@
 typedef struct s_node
 {
 	int					num;
+	int					sorted_index;
 	int					current_position;
 	int					cost;
 	bool				above_median;
@@ -79,6 +80,7 @@ void	set_cost(t_stack *stack_a, t_stack *stack_b);
 void	set_cheapest(t_stack *stack_b);
 
 //Sorting Algorithm
+void	push_til_three(t_stack *stack_a, t_stack *stack_b);
 void	sort_three(t_stack *stack_a);
 void	sort_five(t_stack *stack_a, t_stack *stack_b);
 void	sort_big(t_stack *stack_a, t_stack *stack_b);

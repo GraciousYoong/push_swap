@@ -6,6 +6,7 @@
 	printf("============================\n");
 	print_stack(stack_b->head, stack_b);
 
+#include <stdio.h>
 static void    print_stack(t_node *head, t_stack *stack)
 {
     t_node    *current;

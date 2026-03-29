@@ -85,28 +85,37 @@ void	fill_target_node(t_stack *stack_a, t_stack *stack_b)
 	}
 }
 
+static int	ft_max(int cost_a, int cost_b)
+{
+	if (cost_a > cost_b)
+		return (cost_a);
+	else
+		return (cost_b);
+}
+
 void	set_cost(t_stack *stack_a, t_stack *stack_b)
 {
 	t_node	*current_b;
-	int		size_a;
-	int		size_b;
+	int		cost_a;
+	int		cost_b;
 	int		nodes_left;
 
 	current_b = stack_b->head;
-	size_a = stack_a->size;
-	size_b = stack_b->size;
 	nodes_left = stack_b->size;
 	while (nodes_left > 0)
 	{
 		if (current_b->above_median)
-			current_b->cost = current_b->current_position;
+			cost_b = current_b->current_position;
 		else
-			current_b->cost = size_b - (current_b->current_position);
+			cost_b = stack_b->size - current_b->current_position;
 		if (current_b->target_node->above_median)
-			current_b->cost += current_b->target_node->current_position;
+			cost_a = current_b->target_node->current_position;
 		else
-			current_b->cost
-				+= size_a - (current_b->target_node->current_position);
+			cost_a = stack_a->size - current_b->target_node->current_position;
+		if (current_b->above_median == current_b->target_node->above_median)
+			current_b->cost = ft_max(cost_b, cost_a);
+		else
+			current_b->cost = cost_b + cost_a;
 		current_b = current_b->next;
 		nodes_left--;
 	}

@@ -11,7 +11,7 @@
 /* ************************************************************************** */
 
 #include "checker.h"
-#include "../push_swap/push_swap.h"
+#include "../push_swap_dir/push_swap.h"
 
 static int	ft_strcmp(char *s1, char *s2)
 {
@@ -75,14 +75,14 @@ int	main(int argc, char **argv)
 	else if (argc == 2)
 		argv = split_arg(argv[1], ' ');
 	init_stack_a(&stack_a, argv + 1, argc == 2);
-	stack_size = stack_a->size;
+	stack_size = stack_a.size;
 	next_line = get_next_line(STDIN_FILENO);
 	while (next_line)
 	{
 		parse_operations(&stack_a, &stack_b, next_line);
 		next_line = get_next_line(STDIN_FILENO);
 	}
-	if (stack_sorted(stack_a) && stack_a->size == stack_size)
+	if (stack_sorted(&stack_a) && stack_a.size == stack_size)
 		write(1, "OK\n", 3);
 	else
 		write(1, "KO\n", 3);

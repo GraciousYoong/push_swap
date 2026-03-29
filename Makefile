@@ -54,6 +54,7 @@ OPERATIONS			= 	$(OPERATIONS_DIR)rotate.c \
 ALGORITHM			= 	$(ALGORITHM_DIR)init_nodes.c \
 						$(ALGORITHM_DIR)init_nodes_utils.c \
 						$(ALGORITHM_DIR)move_nodes.c \
+						$(ALGORITHM_DIR)push_til_three.c \
 						$(ALGORITHM_DIR)sort_big.c \
 						$(ALGORITHM_DIR)sort_tiny.c
 

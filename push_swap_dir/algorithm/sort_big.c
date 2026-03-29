@@ -17,8 +17,7 @@ void	sort_big(t_stack *stack_a, t_stack *stack_b)
 {
 	t_node	*smallest;
 
-	while (stack_a->size > 3)
-		pb(stack_a, stack_b, false);
+	push_til_three(stack_a,stack_b);
 	if (!stack_sorted(stack_a))
 		sort_three(stack_a);
 	while (stack_b->size > 0)
