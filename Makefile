@@ -66,6 +66,8 @@ CHECKER				= 	$(CHECKER_DIR)checker.c \
 PUSH_SWAP			= $(MAIN) $(STACK) $(PARSING) $(OPERATIONS) $(ALGORITHM)
 OBJ					= $(patsubst $(PUSH_SWAP_DIR)%.c,$(OBJ_DIR)%.o,$(PUSH_SWAP))
 CHECKER_OBJ			= $(patsubst $(CHECKER_DIR)%.c,$(CHECKER_OBJ_DIR)%.o,$(CHECKER))
+COMMON_SRC			= $(STACK) $(PARSING) $(OPERATIONS) $(ALGORITHM)
+COMMON_OBJ			= $(patsubst $(PUSH_SWAP_DIR)%.c,$(OBJ_DIR)%.o,$(COMMON_SRC))
 
 #	Rules
 
@@ -77,8 +79,8 @@ $(LIBFT):
 $(NAME):			$(OBJ) $(LIBFT)
 					$(CC) $(CFLAGS) $(INC) $(OBJ) $(LIBFT) -o $(NAME)
 
-$(BONUS):			$(OBJ) $(CHECKER_OBJ) $(LIBFT)
-					$(CC) $(CFLAGS) $(INC) $(OBJ) $(CHECKER_OBJ) $(LIBFT) -o $(BONUS)
+$(BONUS): 			$(COMMON_OBJ) $(CHECKER_OBJ) $(LIBFT)
+					$(CC) $(CFLAGS) $(INC) $(COMMON_OBJ) $(CHECKER_OBJ) $(LIBFT) -o $(BONUS)
 
 $(OBJ_DIR)%.o:		$(PUSH_SWAP_DIR)%.c
 					mkdir -p $(@D)

@@ -1,5 +1,7 @@
-!!! 100 random value -> 817-1221, sometime time out
-!!! 500 random value -> 8043-9222, sometime time out
+!!! check_norm
+!!! remove extra files
+!!! check tester
+
 
 //print_stack(stack_a.head, &stack_a);
 	print_stack(stack_a->head, stack_a);
