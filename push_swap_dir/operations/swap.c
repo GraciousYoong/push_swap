@@ -29,14 +29,14 @@ static void	swap(t_stack *stack)
 		stack->tail = first;
 		return ;
 	}
-	third = second->next;
+	third = stack->tail;
 	third->prev = first;
+	third->next = second;
 	first->prev = second;
 	first->next = third;
-	second->prev = stack->head->prev;
+	second->prev = third;
 	second->next = first;
 	stack->head = second;
-	stack->tail = first;
 }
 
 void	sa(t_stack *stack_a, bool is_checker)

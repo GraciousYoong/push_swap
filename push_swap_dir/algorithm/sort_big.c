@@ -12,50 +12,26 @@
 
 #include "../../libft/libft.h"
 #include "../push_swap.h"
-#include <stdio.h>
-
-static void    print_stack(t_node *head, t_stack *stack)
-{
-    t_node    *current;
-    int            i;
-
-    current = head;
-    i = 0;
-    while (i < stack->size)
-    {
-        printf("Node %d: %d\n",i, current->num);
-        current = current->next;
-        i++;
-    }
-}
 
 void	sort_big(t_stack *stack_a, t_stack *stack_b)
 {
-	// t_node	*smallest;
+	t_node	*smallest;
 
 	while (stack_a->size > 3)
 		pb(stack_a, stack_b, false);
 	if (!stack_sorted(stack_a))
 		sort_three(stack_a);
-	print_stack(stack_a->head, stack_a);
-	printf("============================\n");
-	print_stack(stack_b->head, stack_b);
 	while (stack_b->size > 0)
 	{
 		init_nodes(stack_a, stack_b);
 		move_nodes(stack_a, stack_b);
-	}
-	print_stack(stack_a->head, stack_a);
-	printf("============================\n");
-	print_stack(stack_b->head, stack_b);
-
-	
-	// set_current_position(stack_a);
-	// smallest = find_smallest(stack_a);
-	// if (smallest->above_median)
-	// 	while (stack_a->head != smallest)
-	// 		ra(stack_a, false);
-	// else
-	// 	while (stack_a->head != smallest)
-	// 		rra(stack_a, false);
+	}	
+	set_current_position(stack_a);
+	smallest = find_smallest(stack_a);
+	if (smallest->above_median)
+		while (stack_a->head != smallest)
+			ra(stack_a, false);
+	else
+		while (stack_a->head != smallest)
+			rra(stack_a, false);
 }

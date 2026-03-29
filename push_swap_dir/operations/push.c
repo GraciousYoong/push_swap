@@ -32,8 +32,8 @@ static t_node	*remove_front(t_stack *origin)
 		origin->tail->next = origin->head;
 	}
 	origin->size--;
-	node_pushed->next = NULL;
-	node_pushed->prev = NULL;
+	node_pushed->next = node_pushed;
+	node_pushed->prev = node_pushed;
 	return (node_pushed);
 }
 
@@ -45,8 +45,6 @@ static void	add_front(t_stack *target, t_node *node_pushed)
 	{
 		target->head = node_pushed;
 		target->tail = node_pushed;
-		node_pushed->next = node_pushed;
-		node_pushed->prev = node_pushed;
 	}
 	else
 	{
