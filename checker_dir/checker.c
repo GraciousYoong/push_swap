@@ -6,7 +6,7 @@
 /*   By: gyoong <gyoong@student.42kl.edu.my>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/24 03:44:29 by gyoong            #+#    #+#             */
-/*   Updated: 2026/03/24 03:44:29 by gyoong           ###   ########.fr       */
+/*   Updated: 2026/03/30 22:31:55 by gyoong           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,16 +65,27 @@ int	main(int argc, char **argv)
 {
 	t_stack	stack_a;
 	t_stack	stack_b;
+	char	**splitted_arg;
 	int		stack_size;
 	char	*next_line;
 
 	init_stack(&stack_a);
 	init_stack(&stack_b);
-	if (argc < 2 || (argc == 2 && !argv[1][0]))
+	splitted_arg = NULL;
+	if (argc < 2)
 		return (1);
-	else if (argc == 2)
-		argv = split_arg(argv[1], ' ');
-	init_stack_a(&stack_a, argv + 1, argc == 2);
+	if (argc == 2)
+	{
+		if (argc == 2 && !argv[1][0])
+		{
+			ft_putendl_fd("Error", 2);
+			return (1);
+		}
+		splitted_arg = split_arg(argv[1], ' ');
+		init_stack_a(&stack_a, splitted_arg, true);
+	}
+	else
+		init_stack_a(&stack_a, argv + 1, false);
 	stack_size = stack_a.size;
 	next_line = get_next_line(STDIN_FILENO);
 	while (next_line)

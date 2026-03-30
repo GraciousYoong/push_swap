@@ -140,7 +140,7 @@ The core algorithm follows the strategy below:
 
 ### Data Structures Used
 
-* `Doubly linked list` used to implement stacks, enabling efficient rotations and bidirectional traversal
+* `Doubly circular linked list` used to implement stacks, enabling efficient rotations and bidirectional traversal
 * `t_node` used to represent each element, storing data such as number, current_position, target node and cost
 * `t_stack` used to stored head, tail and size of the stack
 
