@@ -6,7 +6,7 @@
 /*   By: gyoong <gyoong@student.42kl.edu.my>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/09 10:51:12 by gyoong            #+#    #+#             */
-/*   Updated: 2026/03/28 23:12:38 by gyoong           ###   ########.fr       */
+/*   Updated: 2026/03/30 15:59:16 by gyoong           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,10 +34,15 @@ int	main(int argc, char **argv)
 	init_stack(&stack_a);
 	init_stack(&stack_b);
 	splitted_arg = NULL;
-	if (argc < 2 || (argc == 2 && !argv[1][0]))
+	if (argc < 2)
 		return (1);
 	if (argc == 2)
 	{
+		if (argc == 2 && !argv[1][0])
+		{
+			ft_putendl_fd("Error", 2);
+			return (1);
+		}
 		splitted_arg = split_arg(argv[1], ' ');
 		init_stack_a(&stack_a, splitted_arg, true);
 	}

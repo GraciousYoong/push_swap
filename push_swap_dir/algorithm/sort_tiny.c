@@ -6,7 +6,7 @@
 /*   By: gyoong <gyoong@student.42kl.edu.my>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/16 22:21:50 by gyoong            #+#    #+#             */
-/*   Updated: 2026/03/28 23:21:33 by gyoong           ###   ########.fr       */
+/*   Updated: 2026/03/30 14:38:56 by gyoong           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,7 +66,8 @@ void	sort_five(t_stack *stack_a, t_stack *stack_b)
 		finish_rotation(stack_a, find_smallest(stack_a), 'a');
 		pb(stack_a, stack_b, false);
 	}
-	sort_three(stack_a);
+	if (!stack_sorted(stack_a))
+		sort_three(stack_a);
 	while (stack_b->size > 0)
 		pa(stack_a, stack_b, false);
 }
