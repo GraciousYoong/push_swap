@@ -6,35 +6,12 @@
 /*   By: gyoong <gyoong@student.42kl.edu.my>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/24 01:28:12 by gyoong            #+#    #+#             */
-/*   Updated: 2026/03/26 18:15:56 by gyoong           ###   ########.fr       */
+/*   Updated: 2026/03/30 13:52:56 by gyoong           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../libft/libft.h"
 #include "../push_swap.h"
-
-void	set_current_position(t_stack *stack)
-{
-	t_node	*temp;
-	int		i;
-	int		median_line;
-
-	if (!stack->head || stack->size == 0)
-		return ;
-	temp = stack->head;
-	i = 0;
-	median_line = stack->size / 2;
-	while (i < stack->size)
-	{
-		temp->current_position = i;
-		if (i < median_line)
-			temp->above_median = true;
-		else
-			temp->above_median = false;
-		temp = temp->next;
-		i++;
-	}
-}
 
 /*
 This function aims to find the target node in stack a
@@ -85,7 +62,7 @@ void	fill_target_node(t_stack *stack_a, t_stack *stack_b)
 	}
 }
 
-static int	ft_max(int cost_a, int cost_b)
+static int	ft_max_cost(int cost_a, int cost_b)
 {
 	if (cost_a > cost_b)
 		return (cost_a);
@@ -113,7 +90,7 @@ void	set_cost(t_stack *stack_a, t_stack *stack_b)
 		else
 			cost_a = stack_a->size - current_b->target_node->current_position;
 		if (current_b->above_median == current_b->target_node->above_median)
-			current_b->cost = ft_max(cost_b, cost_a);
+			current_b->cost = ft_max_cost(cost_b, cost_a);
 		else
 			current_b->cost = cost_b + cost_a;
 		current_b = current_b->next;
@@ -132,15 +109,10 @@ void	set_cheapest(t_stack *stack_b)
 		return ;
 	current_b = stack_b->head;
 	nodes_left = stack_b->size;
-	while (nodes_left--)
-	{
-		current_b->cheapest = false;
-		current_b = current_b->next;
-	}
 	current_b = stack_b->head;
 	cheapest_cost = INT_MAX;
 	nodes_left = stack_b->size;
-	while (nodes_left > 0)
+	while (nodes_left--)
 	{
 		if (current_b->cost < cheapest_cost)
 		{
@@ -148,7 +120,6 @@ void	set_cheapest(t_stack *stack_b)
 			cheapest_cost = current_b->cost;
 		}
 		current_b = current_b->next;
-		nodes_left--;
 	}
 	cheapest_node->cheapest = true;
 }

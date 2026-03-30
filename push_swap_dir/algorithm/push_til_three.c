@@ -6,7 +6,7 @@
 /*   By: gyoong <gyoong@student.42kl.edu.my>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/29 15:04:29 by gyoong            #+#    #+#             */
-/*   Updated: 2026/03/29 15:04:29 by gyoong           ###   ########.fr       */
+/*   Updated: 2026/03/30 13:48:50 by gyoong           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ void	push_til_three(t_stack *stack_a, t_stack *stack_b)
 {
 	int	size;
 	int	median_line;
-	
+
 	size = stack_a->size;
 	median_line = size / 2;
 	assign_sorted_index(stack_a);

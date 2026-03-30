@@ -6,7 +6,7 @@
 /*   By: gyoong <gyoong@student.42kl.edu.my>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/16 14:17:22 by gyoong            #+#    #+#             */
-/*   Updated: 2026/03/26 17:27:39 by gyoong           ###   ########.fr       */
+/*   Updated: 2026/03/30 13:50:58 by gyoong           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,6 @@ bool	is_non_numeric(char *num_str)
 		return (true);
 	if (*num_str == '+' || *num_str == '-')
 		num_str++;
-		
 	while (*num_str)
 	{
 		if (!(*num_str >= '0' && *num_str <= '9'))
@@ -42,7 +41,7 @@ bool	is_duplicate(int num, t_stack *stack_a)
 {
 	t_node	*temp;
 	int		nodes_left;
-	
+
 	if (!stack_a || !stack_a->head)
 		return (false);
 	temp = stack_a->head;

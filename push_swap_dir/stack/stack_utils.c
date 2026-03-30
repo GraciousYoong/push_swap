@@ -6,7 +6,7 @@
 /*   By: gyoong <gyoong@student.42kl.edu.my>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/16 13:53:16 by gyoong            #+#    #+#             */
-/*   Updated: 2026/03/28 23:58:59 by gyoong           ###   ########.fr       */
+/*   Updated: 2026/03/30 13:40:43 by gyoong           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ void	add_back(t_stack *stack_a, t_node *new)
 		stack_a->head = new;
 		stack_a->tail = new;
 		new->next = new;
-    	new->prev = new;
+		new->prev = new;
 	}
 	else
 	{
